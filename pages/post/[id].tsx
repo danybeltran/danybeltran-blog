@@ -24,10 +24,10 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title}</title>
+        <title>{post.title} - Dany Beltran's blog</title>
         <meta
           property="og:title"
-          content={post.title}
+          content={`${post.title} - Dany Beltran's blog`}
           key={`${post.title}-${Math.random()}`}
         />
       </Head>

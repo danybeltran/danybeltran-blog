@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
@@ -145,18 +146,28 @@ export default function Home({ posts: postsData }) {
     sortBy(target?.value);
   };
   return (
-    <div>
-      <div className="w-full pt-4 px-3 flex space-x-4 items-center">
-        <span>Ordenar por</span>
-        <Select onChange={updateSort} className="w-48 bg-white">
-          <option value="fecha">Fecha (reciente)</option>
-          <option value="fecha2">Fecha (antiguo)</option>
-          <option value="nombre">Nombre (a - z)</option>
-          <option value="nombre2">Nombre (z - a)</option>
-        </Select>
+    <>
+      <Head>
+        <title>Dany Beltran's blog</title>
+        <meta
+          property="og:title"
+          content="Dany Beltran's blog"
+          key={`"Dany Beltran's blog-${Math.random()}`}
+        />
+      </Head>
+      <div>
+        <div className="w-full pt-4 px-3 flex space-x-4 items-center">
+          <span>Ordenar por</span>
+          <Select onChange={updateSort} className="w-48 bg-white">
+            <option value="fecha">Fecha (reciente)</option>
+            <option value="fecha2">Fecha (antiguo)</option>
+            <option value="nombre">Nombre (a - z)</option>
+            <option value="nombre2">Nombre (z - a)</option>
+          </Select>
+        </div>
+        <div className="flex flex-wrap items-stretch">{allNotes}</div>
       </div>
-      <div className="flex flex-wrap items-stretch">{allNotes}</div>
-    </div>
+    </>
   );
 }
 
