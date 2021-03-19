@@ -21,7 +21,8 @@ export default function Post({ post }) {
       );
       Array.from(current?.getElementsByTagName("blockquote")).forEach(
         (blockquote: HTMLQuoteElement) => {
-          blockquote.className = "pl-4 py-2 border-l-4 bg-gray-100 overflow-x-auto px-4 text-gray-700";
+          blockquote.className =
+            "pl-4 py-2 border-l-4 bg-gray-100 overflow-x-auto px-4 text-gray-700";
         }
       );
     }
@@ -34,6 +35,18 @@ export default function Post({ post }) {
           property="og:title"
           content={`${post.title} - Dany Beltran's blog`}
           key={`${post.title}-${Math.random()}`}
+        />
+      </Head>
+      <Head>
+        <meta property="og:url" content="http://blog.danybeltran.me" />
+      </Head>
+      <Head>
+        <meta property="og:image" content={post.previewImage} />
+      </Head>
+      <Head>
+        <meta
+          property="og:description"
+          content={post.description}
         />
       </Head>
       <div

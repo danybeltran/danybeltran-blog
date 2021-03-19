@@ -155,6 +155,21 @@ export default function Home({ posts: postsData }) {
           key={`"Dany Beltran's blog-${Math.random()}`}
         />
       </Head>
+      <Head>
+        <meta property="og:url" content="http://blog.danybeltran.me" />
+      </Head>
+      <Head>
+        <meta
+          property="og:description"
+          content="Blog para hablar de cosas que me gustan/interesan"
+        />
+      </Head>
+      <Head>
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/MnYGs0L/image.png"
+        />
+      </Head>
       <div>
         <div className="w-full pt-4 px-3 flex space-x-4 items-center">
           <span>Ordenar por</span>
