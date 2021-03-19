@@ -25,6 +25,11 @@ export default function Post({ post }) {
     <>
       <Head>
         <title>{post.title}</title>
+        <meta
+          property="og:title"
+          content={post.title}
+          key={`${post.title}-${Math.random()}`}
+        />
       </Head>
       <div
         ref={postRef}
