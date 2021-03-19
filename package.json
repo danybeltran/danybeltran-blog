@@ -1,0 +1,38 @@
+{
+  "name": "next-11",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.0.1",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/markdown-it": "^12.0.1",
+    "@types/styled-components": "^5.1.7",
+    "autoprefixer": "^10.1.0",
+    "ci": "^2.0.0",
+    "crypto-js": "^4.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "markdown-it": "^12.0.4",
+    "mime-types": "^2.1.29",
+    "mongoose": "^5.11.11",
+    "next": "10.0.4",
+    "next-api-validation": "^1.0.4",
+    "notyf": "^3.9.0",
+    "postcss": "^8.2.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-icons": "^4.2.0",
+    "styled-components": "^5.2.1",
+    "tailwindcss": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.10.3",
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "typescript": "^4.1.3"
+  }
+}
