@@ -30,24 +30,29 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} - Dany Beltran's blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
         <meta
-          property="og:title"
-          content={`${post.title} - Dany Beltran's blog`}
-          key={`${post.title}-${Math.random()}`}
+          property="og:url"
+          content="http://blog.danybeltran.me"
+          // key={`${post.title}-${Math.random()}`}
         />
-      </Head>
-      <Head>
-        <meta property="og:url" content="http://blog.danybeltran.me" />
-      </Head>
-      <Head>
-        <meta property="og:image" content={post.previewImage} />
-      </Head>
-      <Head>
+        <meta
+          property="og:image"
+          content={post.previewImage}
+          // key={`${post.title}-${Math.random()}`}
+        />
         <meta
           property="og:description"
           content={post.description}
+          // key={`${post.title}-${Math.random()}`}
         />
+        <title>{post.title} - Dany Beltran's blog</title>
+        {/* <meta
+          property="og:title"
+          content={`${post.title} - Dany Beltran's blog`}
+          key={`${post.title}-${Math.random()}`}
+        /> */}
       </Head>
       <div
         ref={postRef}

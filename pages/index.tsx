@@ -95,7 +95,7 @@ export default function Home({ posts: postsData }) {
     );
 
     return (
-      <div className="w-full md:w-1/2 lg:w-1/3 pr-4 p-3">
+      <div key={`blog-danybeltran-${post.title}-${Math.random()}`} className="w-full md:w-1/2 lg:w-1/3 pr-4 p-3">
         <Link href={`/post/${post.url}`}>
           <div
             style={{
@@ -114,26 +114,6 @@ export default function Home({ posts: postsData }) {
               <p style={{ fontSize: "0.7rem" }}>{post.date}</p>
               <p className="text-sm mb-2">{previewContent}</p>
             </div>
-            {/* <div
-              style={{
-                transition: "0.12s",
-              }}
-              onClick={(e) => e.stopPropagation()}
-              className="absolute w-2/5 top-0 left-0 w text-xs flex items-center justify-start"
-            >
-              <div
-                style={{
-                  opacity: 0.4,
-                }}
-                className="absolute left-0 top-0 w-8 rounded-tl-md h-7 bg-black"
-              ></div>
-              <button
-                onClick={clickHandler}
-                className="z-10 flex items-center px-1 rounded-md shadow-md focus:outline-none"
-              >
-                <span className="p-1 pt-1.5">{heart}</span>
-              </button>
-            </div> */}
           </div>
         </Link>
       </div>
@@ -148,27 +128,23 @@ export default function Home({ posts: postsData }) {
   return (
     <>
       <Head>
-        <title>Dany Beltran's blog</title>
-        <meta
+        {/* <meta
           property="og:title"
           content="Dany Beltran's blog"
           key={`"Dany Beltran's blog-${Math.random()}`}
-        />
-      </Head>
-      <Head>
+        /> */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
         <meta property="og:url" content="http://blog.danybeltran.me" />
-      </Head>
-      <Head>
         <meta
           property="og:description"
           content="Blog para hablar de cosas que me gustan/interesan"
         />
-      </Head>
-      <Head>
         <meta
           property="og:image"
           content="https://i.ibb.co/MnYGs0L/image.png"
         />
+        <title>Dany Beltran's blog</title>
       </Head>
       <div>
         <div className="w-full pt-4 px-3 flex space-x-4 items-center">
