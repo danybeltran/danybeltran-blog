@@ -19,6 +19,11 @@ export default function Post({ post }) {
           img.className = " bg-gray-800 overflow-x-auto px-4 text-gray-200";
         }
       );
+      Array.from(current?.getElementsByTagName("blockquote")).forEach(
+        (blockquote: HTMLQuoteElement) => {
+          blockquote.className = "pl-4 py-2 border-l-4 bg-gray-100 overflow-x-auto px-4 text-gray-700";
+        }
+      );
     }
   }, [postRef.current]);
   return (
