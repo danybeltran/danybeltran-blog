@@ -2,26 +2,26 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import Select from "src/components/Select";
-const ShareButton = ({ postUrl = "awa" }) => {
-  const url =
-    typeof window !== "undefined"
-      ? window.location.href
-      : "https://blog.danybeltran.me/";
-  const shareUrl = encodeURIComponent(`${url}/post/${postUrl}`);
-  return (
-    <iframe
-      src={`https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button&size=small&width=96&height=32&appId`}
-      width="96"
-      height="20"
-      style={{ border: "none", overflow: "hidden" }}
-      scrolling="no"
-      frameBorder="0"
-      className="-mr-7"
-      allowFullScreen={true}
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    ></iframe>
-  );
-};
+// const ShareButton = ({ postUrl = "awa" }) => {
+//   const url =
+//     typeof window !== "undefined"
+//       ? window.location.href
+//       : "https://blog.danybeltran.me/";
+//   const shareUrl = encodeURIComponent(`${url}/post/${postUrl}`);
+//   return (
+//     <iframe
+//       src={`https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button&size=small&width=96&height=32&appId`}
+//       width="96"
+//       height="20"
+//       style={{ border: "none", overflow: "hidden" }}
+//       scrolling="no"
+//       frameBorder="0"
+//       className="-mr-7"
+//       allowFullScreen={true}
+//       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+//     ></iframe>
+//   );
+// };
 
 export default function Home({ posts: postsData }) {
   if (typeof window === "undefined") return [];
