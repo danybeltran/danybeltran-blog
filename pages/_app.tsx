@@ -1,5 +1,8 @@
 import Link from "next/link";
 import "../styles/globals.css";
+if (process.env.NODE_ENV === "production") {
+  require("../styles/tailwind.css");
+}
 
 function MyApp({ Component, pageProps }) {
   return (
