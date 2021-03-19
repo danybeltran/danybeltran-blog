@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Md from "markdown-it";
-
+import Head from "next/head";
 const md = Md();
 
 export default function Post({ post }) {
@@ -22,13 +22,19 @@ export default function Post({ post }) {
     }
   }, [postRef.current]);
   return (
-    <div ref={postRef} className="post px-2 space-y-3 md:px-32 lg:px-72 py-10">
-      <h1 className="text-4xl md:text-5xl font-bold">
-        {post.title}
-      </h1>
-      <p className="text-sm">El {post.date}</p>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </div>
+    <>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
+      <div
+        ref={postRef}
+        className="post px-2 space-y-3 md:px-32 lg:px-72 py-10"
+      >
+        <h1 className="text-4xl md:text-5xl font-bold">{post.title}</h1>
+        <p className="text-sm">El {post.date}</p>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
+    </>
   );
 }
 
