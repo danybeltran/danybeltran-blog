@@ -95,7 +95,10 @@ export default function Home({ posts: postsData }) {
     );
 
     return (
-      <div key={`blog-danybeltran-${post.title}-${Math.random()}`} className="w-full md:w-1/2 lg:w-1/3 pr-4 p-3">
+      <div
+        key={`blog-danybeltran-${post.title}-${Math.random()}`}
+        className="w-full md:w-1/2 lg:w-1/3 pr-4 p-3"
+      >
         <Link href={`/post/${post.url}`}>
           <div
             style={{
@@ -127,25 +130,6 @@ export default function Home({ posts: postsData }) {
   };
   return (
     <>
-      <Head>
-        {/* <meta
-          property="og:title"
-          content="Dany Beltran's blog"
-          key={`"Dany Beltran's blog-${Math.random()}`}
-        /> */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-        <meta property="og:url" content="http://blog.danybeltran.me" />
-        <meta
-          property="og:description"
-          content="Blog para hablar de cosas que me gustan/interesan"
-        />
-        <meta
-          property="og:image"
-          content="https://i.ibb.co/MnYGs0L/image.png"
-        />
-        <title>Dany Beltran's blog</title>
-      </Head>
       <div>
         <div className="w-full pt-4 px-3 flex space-x-4 items-center">
           <span>Ordenar por</span>
