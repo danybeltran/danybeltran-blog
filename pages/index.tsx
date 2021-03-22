@@ -98,6 +98,15 @@ export default function Home({ posts: postsData }) {
     <>
       <Head>
         <meta property="og:url" content="http://blog.danybeltran.me" />
+        <meta
+          property="og:description"
+          content="Blog para hablar de cosas que me gustan/interesan"
+        />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/MnYGs0L/image.png"
+        />
+        <title>Blog - danybeltran.me</title>
       </Head>
       <div>
         <nav>

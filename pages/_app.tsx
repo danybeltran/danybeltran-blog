@@ -11,16 +11,6 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <meta
-          property="og:description"
-          content="Blog para hablar de cosas que me gustan/interesan"
-        />
-        <meta
-          property="og:image"
-          content="https://i.ibb.co/MnYGs0L/image.png"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Blog - danybeltran.me</title>
       </Head>
       <>
         <div className="px-6 py-5 h-screen w-full">
