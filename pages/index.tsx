@@ -64,25 +64,11 @@ export default function Home({ posts: postsData }) {
   };
 
   const [updater, setUpdater] = useState(0);
-  function addToLocalStorage(postUrl) {
-    localStorage[`danybeltran-post-${postUrl}`] = "ok";
-    console.log(`danybeltran-post-${postUrl}`);
-    setUpdater((u) => u + 1);
-  }
-  function removeFromLocalStorage(postUrl) {
-    delete localStorage[`danybeltran-post-${postUrl}`];
-    setUpdater((u) => u + 1);
-  }
   const allNotes = posts.map((post) => {
     const previewContent = `${post.content
       .split("")
       .splice(0, window.innerWidth < 400 ? 40 : 90)
       .join("")}...`;
-
-    const clickHandler =
-      typeof localStorage[`danybeltran-post-${post.url}`] === "undefined"
-        ? () => addToLocalStorage(post.url)
-        : () => removeFromLocalStorage(post.url);
 
     const heart = useMemo(
       () =>
@@ -131,9 +117,17 @@ export default function Home({ posts: postsData }) {
   return (
     <>
       <div>
-        <div className="w-full pt-4 px-3 flex space-x-4 items-center">
+        <nav>
+          <Link href="/">
+            <a className="bg-gray-800 text-gray-100 py-1 mt-2 px-4 space-x-2 rounded">
+              blog.danybeltran.me
+            </a>
+          </Link>
+        </nav>
+        <h2 className="pt-3 pb-1 border-b-2 border-gray-400 inline-block">Blog para hablar sobre las cosas que me gustan y algunas que quizá no :P</h2>
+        <div className="w-full pt-4 flex space-x-4 items-center">
           <span>Ordenar por</span>
-          <Select onChange={updateSort} className="w-48 bg-white">
+          <Select onChange={updateSort} className="w-36 text-sm bg-white">
             <option value="fecha">Fecha (reciente)</option>
             <option value="fecha2">Fecha (antiguo)</option>
             <option value="nombre">Nombre (a - z)</option>

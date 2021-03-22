@@ -21,17 +21,17 @@ function MyApp({ Component, pageProps }) {
           content="https://i.ibb.co/MnYGs0L/image.png"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Dany Beltran's blog</title>
+        <title>Blog - danybeltran.me</title>
       </Head>
       <>
-        <div className="px-4 py-12 h-screen w-full">
-          <nav className="fixed shadow z-10 bg-white top-0 left-0 w-full space-x-2 h-12 flex items-center px-4 select-none">
+        <div className="px-6 py-5 h-screen w-full">
+          {/* <nav className="fixed shadow z-10 bg-white top-0 left-0 w-full space-x-2 h-12 flex items-center px-4 select-none">
             <Link href="/">
               <span className="font-semibold text-xl cursor-pointer">
-                Dany's blog
+                Inicio
               </span>
             </Link>
-          </nav>
+          </nav> */}
           <Component {...pageProps} />
         </div>
       </>
