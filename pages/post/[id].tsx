@@ -4,6 +4,28 @@ import Head from "next/head";
 import Link from "next/link";
 const md = Md();
 
+const ShareButton = ({ postUrl = "awa" }) => {
+  const shareUrl = encodeURIComponent(
+    `https://blog.danybeltran.me/post/${postUrl}`
+  );
+  console.log(
+    `https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button&size=small&width=96&height=32&appId`
+  );
+  return (
+    <iframe
+      src={`https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button_count&size=small&width=96&height=32&appId`}
+      width="96"
+      height="20"
+      style={{ border: "none", overflow: "hidden" }}
+      scrolling="no"
+      frameBorder="0"
+      className="-mr-7"
+      allowFullScreen={true}
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+    ></iframe>
+  );
+};
+
 export default function Post({ post }) {
   const postRef = useRef();
 
@@ -65,7 +87,7 @@ export default function Post({ post }) {
         <meta charSet="utf-8" />
         <meta
           property="og:url"
-          content="http://blog.danybeltran.me"
+          content={`http://blog.danybeltran.me/post/${post.url}`}
           // key={`${post.title}-${Math.random()}`}
         />
         <meta
@@ -97,7 +119,11 @@ export default function Post({ post }) {
         className="post px-2 space-y-3 md:px-32 lg:px-72 py-10"
       >
         <h1 className="text-4xl md:text-5xl font-bold">{post.title}</h1>
-        <p className="text-sm text-gray-600">{post.date}</p>
+        <p className="text-sm text-gray-600 flex items-center space-x-2">
+          <span></span>
+          {post.date}
+          <ShareButton postUrl={post.url} />
+        </p>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </>
