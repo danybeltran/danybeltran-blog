@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Link from "next/link";
+import Footer from "src/components/Footer";
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -8,11 +8,12 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="h-full">
         <Head />
-        <body>
+        <body className="relative min-h-full">
           <Main />
           <NextScript />
+          <Footer />
         </body>
       </Html>
     );

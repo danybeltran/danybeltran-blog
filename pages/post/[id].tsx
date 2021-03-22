@@ -1,83 +1,35 @@
 import { useEffect, useRef } from "react";
 import Md from "markdown-it";
 import Head from "next/head";
-import Link from "next/link";
+import Nav from "src/components/Nav";
+import Post, { IPost } from "../../src/components/Post/index";
+import { addClassNameTo } from "src/utils";
 const md = Md();
 
-const ShareButton = ({ postUrl = "awa" }) => {
-  const shareUrl = encodeURIComponent(
-    `https://blog.danybeltran.me/post/${postUrl}`
-  );
-  console.log(
-    `https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button&size=small&width=96&height=32&appId`
-  );
-  return (
-    <iframe
-      src={`https://www.facebook.com/plugins/share_button.php?href=${shareUrl}&layout=button_count&size=small&width=96&height=32&appId`}
-      width="96"
-      height="20"
-      style={{ border: "none", overflow: "hidden" }}
-      scrolling="no"
-      frameBorder="0"
-      className="-mr-7"
-      allowFullScreen={true}
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-    ></iframe>
-  );
-};
-
-export default function Post({ post }) {
+export default function _Post({ post }: { post: IPost }) {
   const postRef = useRef();
 
   useEffect(() => {
     const { current }: { current: HTMLElement } = postRef;
     if (current) {
-      Array.from(current?.getElementsByTagName("img")).forEach(
-        (img: HTMLImageElement) => {
-          img.className = "margin-auto my-5 shadow rounded mx-auto";
-        }
-      );
-      Array.from(current?.getElementsByTagName("pre")).forEach(
-        (img: HTMLImageElement) => {
-          img.className = " bg-gray-800 overflow-x-auto px-4 text-gray-200";
-        }
-      );
-      Array.from(current?.getElementsByTagName("blockquote")).forEach(
-        (blockquote: HTMLQuoteElement) => {
-          blockquote.className =
-            "pl-4 py-2 border-l-4 bg-gray-100 overflow-x-auto px-4 text-gray-700";
-        }
-      );
-      Array.from(current?.querySelectorAll("h1")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-5xl";
-        }
-      );
-      Array.from(current?.querySelectorAll("h2")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-4xl";
-        }
-      );
-      Array.from(current?.querySelectorAll("h3")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-3xl";
-        }
-      );
-      Array.from(current?.querySelectorAll("h4")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-2xl";
-        }
-      );
-      Array.from(current?.querySelectorAll("h5")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-xl";
-        }
-      );
-      Array.from(current?.querySelectorAll("h6")).forEach(
-        (heading: HTMLHeadElement) => {
-          heading.className = "font-bold text-lg";
-        }
-      );
+      addClassNameTo(current, [
+        /** images */
+        ["img", "margin-auto my-5 shadow rounded mx-auto"],
+        /** For code snippets */
+        ["pre", "bg-gray-800 overflow-x-auto px-4 text-gray-200"],
+        /** Tailwind doens't add any styling for blockquotes */
+        [
+          "blockquote",
+          "pl-4 py-2 border-l-4 bg-gray-100 overflow-x-auto px-4 text-gray-700",
+        ],
+        /** Different sizing for headings, same font weight */
+        ["h1", "text-5xl font-bold"],
+        ["h2", "text-4xl font-bold"],
+        ["h3", "text-3xl font-bold"],
+        ["h4", "text-2xl font-bold"],
+        ["h5", "text-xl font-bold"],
+        ["h6", "text-lg font-bold"],
+      ]);
     }
   }, [postRef.current]);
   return (
@@ -88,44 +40,13 @@ export default function Post({ post }) {
         <meta
           property="og:url"
           content={`http://blog.danybeltran.me/post/${post.url}`}
-          // key={`${post.title}-${Math.random()}`}
         />
-        <meta
-          property="og:image"
-          content={post.previewImage}
-          // key={`${post.title}-${Math.random()}`}
-        />
-        <meta
-          property="og:description"
-          content={post.description}
-          // key={`${post.title}-${Math.random()}`}
-        />
+        <meta property="og:image" content={post.previewImage} />
+        <meta property="og:description" content={post.description} />
         <title>{post.title} - danybeltran</title>
-        {/* <meta
-          property="og:title"
-          content={`${post.title} - Dany Beltran's blog`}
-          key={`${post.title}-${Math.random()}`}
-        /> */}
       </Head>
-      <nav>
-        <Link href="/">
-          <a className="bg-gray-800 text-gray-100 py-1 mt-2 px-4 space-x-2 rounded">
-            blog.danybeltran.me
-          </a>
-        </Link>
-      </nav>
-      <div
-        ref={postRef}
-        className="post px-2 space-y-3 md:px-32 lg:px-72 py-10"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold">{post.title}</h1>
-        <p className="text-sm text-gray-600 flex items-center space-x-2">
-          <span></span>
-          {post.date}
-          <ShareButton postUrl={post.url} />
-        </p>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
-      </div>
+      <Nav />
+      <Post ref={postRef} {...post} />
     </>
   );
 }
@@ -150,7 +71,8 @@ export async function getStaticProps({ params }) {
   const foundPost = await fetch(
     `https://danybeltran-blog-api.danybeltran.repl.co/posts/${postId}`
   );
-  const post = await foundPost.json();
+  const post: IPost = await foundPost.json();
+  console.log({ post });
   return {
     props: {
       post: {

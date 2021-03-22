@@ -1,29 +1,24 @@
 import Head from "next/head";
-import Link from "next/link";
 import "../styles/globals.css";
 if (process.env.NODE_ENV === "production") {
   require("../styles/tailwind.css");
 }
 
 function MyApp({ Component, pageProps }) {
+  if (typeof window !== "undefined") {
+    document.getElementById("__next").classList.add("h-full");
+  }
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
       </Head>
-      <>
-        <div className="px-6 py-5 h-screen w-full">
-          {/* <nav className="fixed shadow z-10 bg-white top-0 left-0 w-full space-x-2 h-12 flex items-center px-4 select-none">
-            <Link href="/">
-              <span className="font-semibold text-xl cursor-pointer">
-                Inicio
-              </span>
-            </Link>
-          </nav> */}
+      <div>
+        <div className="px-6 pt-5 pb-44 w-full h-full">
           <Component {...pageProps} />
         </div>
-      </>
+      </div>
     </>
   );
 }
