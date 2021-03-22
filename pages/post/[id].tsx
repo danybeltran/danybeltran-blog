@@ -78,7 +78,7 @@ export default function Post({ post }) {
           content={post.description}
           // key={`${post.title}-${Math.random()}`}
         />
-        <title>{post.title} - Dany Beltran's blog</title>
+        <title>{post.title} - danybeltran</title>
         {/* <meta
           property="og:title"
           content={`${post.title} - Dany Beltran's blog`}
